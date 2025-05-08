@@ -8,9 +8,9 @@ from shapely.geometry import LineString, MultiLineString
 
 # ─────────────────────────────────────────────────────────────
 # FILEPATHS
-county_shape_filepath = "/Users/wangtianhe/Desktop/大豆/soydash/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp"
-production_date_filepath = "/Users/wangtianhe/Desktop/大豆/soydash/data/production_data/"
-river_data_filepath = "/Users/wangtianhe/Desktop/大豆/soydash/data/water_geo_data/Navigable_Waterway_Network_Lines/Navigable_Waterway_Network_Lines.shp"
+county_shape_filepath = "/Users/wangtianhe/Desktop/大豆/grainDASH/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp"
+production_date_filepath = "/Users/wangtianhe/Desktop/大豆/grainDASH/data/production_data/"
+river_data_filepath = "/Users/wangtianhe/Desktop/大豆/grainDASH/data/water_geo_data/Navigable_Waterway_Network_Lines/Navigable_Waterway_Network_Lines.shp"
 
 # ─────────────────────────────────────────────────────────────
 # LOAD COUNTY SHAPEFILE
@@ -30,13 +30,13 @@ major_names =  ["Mississippi", "Ohio", "Illinois", "Arkansas", "Tennessee", "Mis
 uppercased_major_names = [name.upper() for name in major_names]
 waterways_gdf = waterways_gdf[waterways_gdf["RIVERNAME"].str.contains('|'.join(uppercased_major_names), na=False)]
 # Optional: simplify for performance
-# waterways_gdf["geometry"] = waterways_gdf["geometry"].simplify(tolerance=0.1, preserve_topology=True)
+waterways_gdf["geometry"] = waterways_gdf["geometry"].simplify(tolerance=0.3, preserve_topology=True)
 
 # Save for later loading
-waterways_gdf.to_file("/Users/wangtianhe/Desktop/大豆/soydash/data/water_geo_data/water_output/dash_ready_rivers.geojson", driver="GeoJSON")
+waterways_gdf.to_file("/Users/wangtianhe/Desktop/大豆/grainDASH/data/water_geo_data/water_output/dash_ready_rivers.geojson", driver="GeoJSON")
 
 # ─────────────────────────────────────────────────────────────
-rivers_gdf = gpd.read_file("/Users/wangtianhe/Desktop/大豆/soydash/data/water_geo_data/water_output/dash_ready_rivers.geojson")
+rivers_gdf = gpd.read_file("/Users/wangtianhe/Desktop/大豆/grainDASH/data/water_geo_data/water_output/dash_ready_rivers.geojson")
 
 # ─────────────────────────────────────────────────────────────
 # LOAD PRODUCTION DATA

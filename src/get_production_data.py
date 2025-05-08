@@ -42,4 +42,4 @@ if __name__ == "__main__":
     # Keep relevant columns and save
     for name, df in [("corn", df_corn), ("soybeans", df_soy)]:
         df_filtered = df[["state_name", "county_name", "year", "Value", "unit_desc", "state_fips_code", "county_code"]]
-        df_filtered.to_csv(f"/Users/wangtianhe/Desktop/大豆/soydash/data/production_data/{name}_county_production_2023.csv", index=False)
+        df_filtered.to_csv(f"/Users/wangtianhe/Desktop/大豆/grainDASH/data/production_data/{name}_county_production_2023.csv", index=False)

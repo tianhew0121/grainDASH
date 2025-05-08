@@ -69,4 +69,4 @@ def fetch_rivers_by_tile(bbox, tile_size=2.0, simplify_tolerance=0.01, retry_lim
 
 bbox = [36.0, -100.0, 45.0, -85.0]  # [south, west, north, east]
 rivers = fetch_rivers_by_tile(bbox, tile_size=2.0, simplify_tolerance=0.01)
-rivers.to_file("/Users/wangtianhe/Desktop/大豆/soydash/data/water_geo_data/water_output/osm_major_rivers.geojson", driver="GeoJSON")
+rivers.to_file("/Users/wangtianhe/Desktop/大豆/grainDASH/data/water_geo_data/water_output/osm_major_rivers.geojson", driver="GeoJSON")

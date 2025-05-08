@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # Path to your directory containing all state subfolders
-base_path = "/Users/wangtianhe/Desktop/大豆/soydash/data/water_geo_data"
+base_path = "/Users/wangtianhe/Desktop/大豆/grainDASH/data/water_geo_data"
 
 # List to hold GeoDataFrames
 gdf_list = []
@@ -29,7 +29,7 @@ for root, dirs, files in os.walk(base_path):
 merged_rivers = gpd.GeoDataFrame(pd.concat(gdf_list, ignore_index=True), crs="EPSG:4326")
 
 # Save to file (choose one)
-output_master_path = "/Users/wangtianhe/Desktop/大豆/soydash/data/water_geo_data/water_output/"
+output_master_path = "/Users/wangtianhe/Desktop/大豆/grainDASH/data/water_geo_data/water_output/"
 output_path_gpkg = f"{output_master_path}merged_rivers.gpkg"
 output_path_geojson = f"{output_master_path}merged_rivers.geojson"
 
